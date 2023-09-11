@@ -65,7 +65,11 @@ class Rasagulla extends React.Component {
     return (
       <Row>
         <Col>
-          <img src={"/images/" + image.name} style={{ width: "10rem" }} />
+          <img
+            alt=""
+            src={"/images/" + image.name}
+            style={{ width: "10rem" }}
+          />
         </Col>
         <Col>
           {image.reason ? <h3>{image.reason}</h3> : <h3>{this.failMsg()}</h3>}
@@ -119,7 +123,11 @@ class Rasagulla extends React.Component {
     return (
       <div id="alphabet-container">
         <Card style={{ width: "25rem" }}>
-          <Card.Img variant="top" src={"/images/" + currAlphabet + ".jpg"} />
+          <Card.Img
+            alt=""
+            variant="top"
+            src={"/images/" + currAlphabet + ".jpg"}
+          />
         </Card>
       </div>
     );
@@ -127,7 +135,7 @@ class Rasagulla extends React.Component {
   renderCard(image) {
     return (
       <Card style={{ width: "13rem" }}>
-        <Card.Img variant="top" src={"/images/" + image.name} />
+        <Card.Img alt="" variant="top" src={"/images/" + image.name} />
         <Card.Body>
           <Card.Title>
             <button
