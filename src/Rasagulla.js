@@ -109,12 +109,19 @@ class Rasagulla extends React.Component {
         show={this.state.showModal}
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full text-white"
       >
-        <Modal.Header>
-          <Modal.Title>{image.title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{this.modalBody(image)}</Modal.Body>
-        <Modal.Footer>{this.modalFooter(image)}</Modal.Footer>
+        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 bg-opacity-75">
+          <Modal.Header className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+            <Modal.Title>{image.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="p-6 space-y-6">
+            {this.modalBody(image)}
+          </Modal.Body>
+          <Modal.Footer className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+            {this.modalFooter(image)}
+          </Modal.Footer>
+        </div>
       </Modal>
     );
   }
@@ -134,16 +141,14 @@ class Rasagulla extends React.Component {
   }
   renderCard(image) {
     return (
-      <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
-          <img
-            class="rounded-t-lg"
-            alt=""
-            variant="top"
-            src={"/images/" + image.name}
-          />
-        </a>
-        <div class="p-5">
+      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <img
+          className="rounded-t-lg"
+          alt=""
+          variant="top"
+          src={"/images/" + image.name}
+        />
+        <div className="p-5">
           <button
             className="btn"
             onClick={() => {
@@ -187,8 +192,8 @@ class Rasagulla extends React.Component {
             <Col xs={4}>{this.renderAlphabet()}</Col>
             <Col xs={8}>{this.renderGifts()}</Col>
           </Row>
+          {this.giftModal()}
         </header>
-        {this.giftModal()}
       </div>
     );
   }
