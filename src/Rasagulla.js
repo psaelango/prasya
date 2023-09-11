@@ -134,36 +134,39 @@ class Rasagulla extends React.Component {
   }
   renderCard(image) {
     return (
-      <Card style={{ width: "13rem" }}>
-        <Card.Img alt="" variant="top" src={"/images/" + image.name} />
-        <Card.Body>
-          <Card.Title>
-            <button
-              className="btn"
-              onClick={() => {
-                this.setState({ showModal: true, selectedImage: image });
-                if (image.gift) {
-                  const win = document.getElementById("rasagulla");
-                  console.log("win = ", win);
-                  win.play();
-                } else {
-                  const failAudioCurrent = this.state.failAudio;
-                  const fail = document.getElementById(
-                    `fail${failAudioCurrent}`
-                  );
-                  const failAudioNew =
-                    failAudioCurrent < 16 ? failAudioCurrent + 1 : 1;
-                  this.setState({ failAudio: failAudioNew });
-                  console.log("fail = ", fail);
-                  fail.play();
-                }
-              }}
-            >
-              {image.title}
-            </button>
-          </Card.Title>
-        </Card.Body>
-      </Card>
+      <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <a href="#">
+          <img
+            class="rounded-t-lg"
+            alt=""
+            variant="top"
+            src={"/images/" + image.name}
+          />
+        </a>
+        <div class="p-5">
+          <button
+            className="btn"
+            onClick={() => {
+              this.setState({ showModal: true, selectedImage: image });
+              if (image.gift) {
+                const win = document.getElementById("rasagulla");
+                console.log("win = ", win);
+                win.play();
+              } else {
+                const failAudioCurrent = this.state.failAudio;
+                const fail = document.getElementById(`fail${failAudioCurrent}`);
+                const failAudioNew =
+                  failAudioCurrent < 16 ? failAudioCurrent + 1 : 1;
+                this.setState({ failAudio: failAudioNew });
+                console.log("fail = ", fail);
+                fail.play();
+              }
+            }}
+          >
+            {image.title}
+          </button>
+        </div>
+      </div>
     );
   }
   renderGifts() {
